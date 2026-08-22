@@ -7,6 +7,7 @@ import { ownerExists } from "@/lib/auth/owner";
 import { applySessionCookies, createSession } from "@/lib/auth/session";
 import { forbidden } from "@/lib/api/errors";
 import { json, toErrorResponse } from "@/lib/api/respond";
+import { seedDemo } from "@/lib/domain/seed";
 
 export async function POST(req: Request): Promise<Response> {
   try {
@@ -25,6 +26,7 @@ export async function POST(req: Request): Promise<Response> {
       updatedAt: now,
     };
     await db.insert(users).values(user);
+    await seedDemo(db, user.id);
     const token = await createSession(user.id);
     const response = json(
       {
