@@ -1,4 +1,5 @@
 import { authenticateRequest, type AuthContext } from "@/lib/auth/request-auth";
+import { clientIp, rateLimit } from "@/lib/api/rate-limit";
 import { toErrorResponse } from "@/lib/api/respond";
 
 type AuthedHandler = (
@@ -14,6 +15,10 @@ export function withAuth(handler: AuthedHandler) {
   ): Promise<Response> => {
     try {
       const auth = await authenticateRequest(req);
+      rateLimit(
+        `${auth.via}:${clientIp(req)}:${auth.userId}`,
+        auth.via === "key" ? 60 : 120,
+      );
       const params = route?.params ? await route.params : {};
       return await handler(req, auth, params);
     } catch (error) {

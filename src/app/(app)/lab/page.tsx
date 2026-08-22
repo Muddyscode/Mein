@@ -1,14 +1,5 @@
-import { PageHeader } from "@/components/patterns/page-header";
-import { EmptyState } from "@/components/primitives/empty-state";
+import { LabView } from "@/app/(app)/lab/lab-view";
 
 export default function LabPage() {
-  return (
-    <div className="flex flex-col gap-6">
-      <PageHeader
-        title="API"
-        description="Keys, playground, and the contract."
-      />
-      <EmptyState title="The lab opens once keys exist." />
-    </div>
-  );
+  return <LabView />;
 }
