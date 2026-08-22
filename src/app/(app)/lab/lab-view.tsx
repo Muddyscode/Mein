@@ -26,18 +26,19 @@ export function LabView() {
   const [confirmId, setConfirmId] = useState<string | null>(null);
 
   useEffect(() => {
-    const stored = sessionStorage.getItem(STORAGE) ?? "";
-    setPlaygroundKey(stored);
     let cancelled = false;
+    const stored = sessionStorage.getItem(STORAGE) ?? "";
     void api<{ data: ApiKeyDto[] }>("/api/v1/keys")
       .then((payload) => {
         if (!cancelled) {
           setKeys(payload.data);
+          setPlaygroundKey(stored);
         }
       })
       .catch(() => {
         if (!cancelled) {
           setKeys([]);
+          setPlaygroundKey(stored);
         }
       });
     return () => {
