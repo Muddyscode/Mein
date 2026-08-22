@@ -20,6 +20,7 @@ export function LabView() {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("lab");
   const [revealed, setRevealed] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
   const [playgroundKey, setPlaygroundKey] = useState("");
   const [busy, setBusy] = useState(false);
   const [confirmId, setConfirmId] = useState<string | null>(null);
@@ -53,6 +54,7 @@ export function LabView() {
       );
       setKeys((current) => [result.data, ...current]);
       setRevealed(result.data.key);
+      setCopied(false);
       sessionStorage.setItem(STORAGE, result.data.key);
       setPlaygroundKey(result.data.key);
       setOpen(false);
@@ -143,10 +145,19 @@ export function LabView() {
             className="mt-3"
             size="sm"
             variant="secondary"
-            onClick={() => void navigator.clipboard.writeText(revealed)}
+            onClick={() => {
+              void navigator.clipboard.writeText(revealed).then(() => {
+                setCopied(true);
+              });
+            }}
           >
-            Copy
+            {copied ? "Copied" : "Copy"}
           </Button>
+          {copied ? (
+            <p className="mt-2 text-sm text-success" aria-live="polite">
+              Full key copied.
+            </p>
+          ) : null}
         </div>
       ) : null}
 
