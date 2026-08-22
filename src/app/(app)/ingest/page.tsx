@@ -1,5 +1,5 @@
 import { PageHeader } from "@/components/patterns/page-header";
-import { EmptyState } from "@/components/primitives/empty-state";
+import { IngestComposer } from "@/components/patterns/ingest-composer";
 
 export default function IngestPage() {
   return (
@@ -8,7 +8,7 @@ export default function IngestPage() {
         title="Ingest"
         description="Turn messy input into an owned memory."
       />
-      <EmptyState title="Composer arrives next." />
+      <IngestComposer />
     </div>
   );
 }

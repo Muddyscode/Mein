@@ -250,3 +250,11 @@ export const threadMemoriesRelations = relations(threadMemories, ({ one }) => ({
     references: [memories.id],
   }),
 }));
+
+export type User = typeof users.$inferSelect;
+export type Session = typeof sessions.$inferSelect;
+export type Source = typeof sources.$inferSelect;
+export type Memory = typeof memories.$inferSelect;
+export type Tag = typeof tags.$inferSelect;
+export type Thread = typeof threads.$inferSelect;
+export type ApiKey = typeof apiKeys.$inferSelect;
