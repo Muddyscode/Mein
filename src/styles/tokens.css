@@ -1,0 +1,58 @@
+:root {
+  --bg: #0b0d10;
+  --bg-elevated: #12151c;
+  --surface: #171b24;
+  --surface-hover: #1c2230;
+  --border: #2a3142;
+  --border-subtle: #1e2433;
+  --text: #e8eaed;
+  --text-muted: #8b93a7;
+  --text-faint: #5c657a;
+  --accent: #7c9cff;
+  --accent-muted: #3d4f8f;
+  --success: #3ddc97;
+  --warning: #f0b429;
+  --danger: #f07178;
+  --paper: #f3efe6;
+  --focus: color-mix(in srgb, var(--accent) 60%, transparent);
+  --elevation-1: 0 1px 2px rgba(0, 0, 0, 0.24), 0 1px 8px rgba(0, 0, 0, 0.18);
+  --elevation-2: 0 8px 24px rgba(0, 0, 0, 0.36);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-elevated: var(--bg-elevated);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-line: var(--border);
+  --color-subtle: var(--border-subtle);
+  --color-fg: var(--text);
+  --color-muted: var(--text-muted);
+  --color-faint: var(--text-faint);
+  --color-accent: var(--accent);
+  --color-accent-muted: var(--accent-muted);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-paper: var(--paper);
+  --color-focus: var(--focus);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  --shadow-elevation-1: var(--elevation-1);
+  --shadow-elevation-2: var(--elevation-2);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", monospace;
+  --font-display: var(--font-newsreader), ui-serif, Georgia, serif;
+
+  --text-display: 2.5rem;
+  --text-display--line-height: 1.15;
+  --text-title: 2rem;
+  --text-title--line-height: 1.2;
+  --text-heading: 1.5rem;
+  --text-heading--line-height: 1.25;
+}
