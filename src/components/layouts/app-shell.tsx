@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { SidebarNav } from "@/components/patterns/sidebar-nav";
 import { IconButton } from "@/components/primitives/icon-button";
+import { KeyboardShortcuts } from "@/components/layouts/keyboard-shortcuts";
 import { cn } from "@/lib/cn";
 
 type AppShellProps = {
@@ -17,6 +18,7 @@ export function AppShell({ children, inspector }: AppShellProps) {
 
   return (
     <div className="min-h-screen bg-bg text-fg">
+      <KeyboardShortcuts />
       <div className="flex min-h-screen">
         <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col gap-8 border-r border-subtle bg-elevated p-4 lg:flex">
           <Brand />

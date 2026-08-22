@@ -81,8 +81,8 @@ export function SearchView() {
         <EmptyState title="Nothing matched." />
       ) : (
         <div className="flex flex-col gap-3">
-          {results.map((memory) => (
-            <MemoryCard key={memory.id} memory={memory} />
+          {results.map((memory, index) => (
+            <MemoryCard key={memory.id} memory={memory} index={index} />
           ))}
         </div>
       )}

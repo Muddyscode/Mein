@@ -1,11 +1,27 @@
+"use client";
+
 import Link from "next/link";
+import { motion, useReducedMotion } from "motion/react";
 import { Card } from "@/components/primitives/card";
 import { TagChip } from "@/components/patterns/tag-chip";
 import type { MemoryDto } from "@/lib/domain/types";
 
-export function MemoryCard({ memory }: { memory: MemoryDto }) {
+export function MemoryCard({
+  memory,
+  index = 0,
+}: {
+  memory: MemoryDto;
+  index?: number;
+}) {
+  const reduce = useReducedMotion();
   const demo = memory.tags?.some((tag) => tag.name.toLowerCase() === "demo");
+  const delay = Math.min(index, 5) * 0.04;
   return (
+    <motion.div
+      initial={reduce ? false : { opacity: 0, y: 6 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: reduce ? 0 : 0.16, delay: reduce ? 0 : delay }}
+    >
     <Link href={`/memories/${memory.id}`} className="block">
       <Card interactive className="flex flex-col gap-3 p-5">
         <div className="flex items-start justify-between gap-3">
@@ -29,5 +45,6 @@ export function MemoryCard({ memory }: { memory: MemoryDto }) {
         </div>
       </Card>
     </Link>
+    </motion.div>
   );
 }
